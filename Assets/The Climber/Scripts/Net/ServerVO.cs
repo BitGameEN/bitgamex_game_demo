@@ -64,6 +64,11 @@ public class ServerVO{
 		public string role_balance;
 	}
 
+	public class ConsumeCoinVO: ErrorArg{
+		public int succ;
+		public string role_balance;
+	}
+
 	public class ErrorArg{
 		public string req;
 		public int errno;
@@ -81,7 +86,9 @@ public class ServerVO{
 			GOLD_NOT_ENOUGH = -990,
 			REQUEST_FAILED = -989,
 			REQUEST_TIMEOUT = -988,
-			UNKNOWN = -987
+			UNKNOWN = -987,
+			INVALID_WALLET_ADDR = -986,
+			INVALID_EXCHANGE_ID = -985
 		}
 	}
 }

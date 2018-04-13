@@ -156,4 +156,17 @@ public class SettingsManger : MonoBehaviour {
 			}
 		});
 	}
+
+	public void ConsumeCoin(){
+		API.Instance.ConsumeCoin(()=>{
+			Debug.LogWarning("success");
+			tips.text = "消耗游戏币成功!";
+		},(e)=>{
+			Debug.LogWarning("fail");
+			tips.text = "消耗游戏币失败!";
+			if(e != null){
+				tips.text += e.errno;
+			}
+		});
+	}
 }

@@ -242,4 +242,27 @@ public class API{
 			fail(null);
 		});
 	}
+
+	public void ConsumeCoin(Action success,Action<ServerVO.ConsumeCoinVO> fail){
+		var args = new Dictionary<string,object>();
+		args["a"] = "consume_coin";
+		args["uid"] = App.Instance.uid;
+		args["game_id"] = App.Instance.game.game_id;
+		args["token"] = App.Instance.token;
+		args["coin_type"] = _coin_type;
+		args["amount"] = 10.5;
+		args["time"] = App.Instance.time;
+		args["sign"] = Encrypt.Md5(App.Instance.uid+""+
+			App.Instance.game.game_id+""+App.Instance.token+_coin_type+args["amount"]+args["time"]+App.key);
+		Server.Instance.Get<ServerVO.ConsumeCoinVO>(args,(receive)=>{
+			if(receive.succ == 1){
+				App.Instance.role_balance = receive.role_balance;
+				success();
+			}else{
+				fail(receive);
+			}
+		},()=>{
+			fail(null);
+		});
+	}
 }
