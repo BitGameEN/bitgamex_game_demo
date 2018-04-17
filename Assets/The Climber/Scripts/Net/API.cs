@@ -211,7 +211,8 @@ public class API{
 		args["token"] = App.Instance.token;
 		Server.Instance.Get<ServerVO.GetCoinListToDrawVO>(args,(receive)=>{
 			if(receive.succ == 1){
-				App.Instance.coin_list_to_draw = receive.coin_list;
+				//App.Instance.coin_list_to_draw = receive.coin_list;
+				App.Instance.coin_list_to_draw = Server.res;
 				success();
 			}else{
 				fail(receive);

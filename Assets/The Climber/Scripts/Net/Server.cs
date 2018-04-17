@@ -6,6 +6,7 @@ using UnityEngine;
 public class Server : MonoBehaviour {
 	public static string SERVER_URL = "http://47.74.226.126:8800";
 	private static Server _instance;
+	public static string res;
 	public void Awake(){
 		_instance = this;
 		DontDestroyOnLoad(this);
@@ -20,6 +21,7 @@ public class Server : MonoBehaviour {
 	public void Get<T>(Dictionary<string,object> args,Action<T> response,Action error=null){
 		StartCoroutine(Send<T>(false,args,(result)=>{
 			var obj = (T)JsonUtility.FromJson(result,typeof(T));
+			res = result;
 			response(obj);
 		},error));
 	}
