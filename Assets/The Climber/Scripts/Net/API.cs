@@ -21,6 +21,8 @@ public class API{
 		args["uid"] = 0;
 		args["game_id"] = App.Instance.game.game_id;
 		args["device_id"] = App.Instance.device_id;
+		args["user_name"] = "";
+		args["password"] = "";
 		args["time"] = App.Instance.time;
 		args["device_model"] = App.Instance.device_model;
 		args["os_type"] = App.Instance.os_type;
@@ -29,7 +31,7 @@ public class API{
 		args["org_device_id"] = App.Instance.org_device_id;
 		args["gc_id"] = App.Instance.gc_id;
 		args["fb_id"] = App.Instance.fb_id;
-		args["sign"] = Encrypt.Md5(0+""+App.Instance.game.game_id+""+App.Instance.device_id+""+args["time"]+""+App.key);
+		args["sign"] = Encrypt.Md5(0+""+App.Instance.game.game_id+""+App.Instance.device_id+""+args["user_name"]+args["password"]+args["time"]+""+App.key);
 		Server.Instance.Get<ServerVO.LoginGameVO>(args,(receive)=>{
 			if(receive.succ == 1){
 				App.Instance.uid = receive.uid;
