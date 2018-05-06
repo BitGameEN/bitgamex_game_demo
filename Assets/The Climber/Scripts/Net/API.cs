@@ -123,8 +123,9 @@ public class API{
 		args["game_id"] = App.Instance.game.game_id;
 		args["token"] = App.Instance.token;
 		args["exchange_accid"] = accid;
+		args["verify_code"] = "1234";
 		args["time"] = App.Instance.time;
-		args["sign"] = Encrypt.Md5(App.Instance.uid+""+App.Instance.game.game_id+""+App.Instance.token+accid+args["time"]+App.key);
+		args["sign"] = Encrypt.Md5(App.Instance.uid+""+App.Instance.game.game_id+""+App.Instance.token+accid+args["verify_code"]+args["time"]+App.key);
 		Server.Instance.Get<ServerVO.BindExchangeAccidVO>(args,(receive)=>{
 			if(receive.succ == 1){
 				App.Instance.exchange_accid = receive.exchange_accid;
