@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Server : MonoBehaviour {
-	public static string SERVER_URL = "http://47.74.226.126:8800";
+	public static string SERVER_URL = "https://poc-test.bit.game:18800";
 	private static Server _instance;
 	public static string res;
 	public void Awake(){
@@ -49,7 +49,7 @@ public class Server : MonoBehaviour {
 			foreach(var item in args){
 				str += item.Key + "=" + WWW.EscapeURL(item.Value.ToString())+"&";
 			}
-			Debug.LogWarning("str"+str);
+			Debug.LogWarning("str:=>"+SERVER_URL+"/?"+str);
 			www = UnityEngine.Networking.UnityWebRequest.Get(SERVER_URL+"/?"+str);
 		}
 		yield return www.Send();
