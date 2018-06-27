@@ -21,8 +21,8 @@ public class API{
 		args["uid"] = 0;
 		args["game_id"] = App.Instance.game.game_id;
 		args["device_id"] = App.Instance.device_id;
-		args["user_name"] = "";
-		args["password"] = "";
+		args["user_name"] = "gulige";
+		args["password"] = "gulige123";
 		args["time"] = App.Instance.time;
 		args["device_model"] = App.Instance.device_model;
 		args["os_type"] = App.Instance.os_type;
@@ -146,8 +146,9 @@ public class API{
 		args["token"] = App.Instance.token;
 		args["coin_type"] = _coin_type;
 		args["amount"] = amount;
+		args["verify_code"] = "965085";
 		args["time"] = App.Instance.time;
-		args["sign"] = Encrypt.Md5(App.Instance.uid+""+App.Instance.game.game_id+""+App.Instance.token+_coin_type+amount+args["time"]+App.key);
+		args["sign"] = Encrypt.Md5(App.Instance.uid+""+App.Instance.game.game_id+""+App.Instance.token+_coin_type+amount+args["verify_code"]+args["time"]+App.key);
 		Server.Instance.Get<ServerVO.TransferCoinToExchangeVO>(args,(receive)=>{
 			if(receive.succ == 1){
 				App.Instance.role_balance = receive.role_balance;
