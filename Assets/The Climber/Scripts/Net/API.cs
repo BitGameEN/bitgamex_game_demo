@@ -21,8 +21,8 @@ public class API{
 		args["uid"] = 0;
 		args["game_id"] = App.Instance.game.game_id;
 		args["device_id"] = App.Instance.device_id;
-		args["user_name"] = "gulige";
-		args["password"] = "gulige123";
+		args["user_name"] = "";
+		args["password"] = "";
 		args["time"] = App.Instance.time;
 		args["device_model"] = App.Instance.device_model;
 		args["os_type"] = App.Instance.os_type;
