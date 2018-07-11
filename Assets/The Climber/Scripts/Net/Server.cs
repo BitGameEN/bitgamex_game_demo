@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Server : MonoBehaviour {
+	// dev: https://poc-test.bit.game:18800, prod: https://poc.bit.game/svc
 	public static string SERVER_URL = "https://poc-test.bit.game:18800";
 	private static Server _instance;
 	public static string res;
